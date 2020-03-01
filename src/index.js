@@ -11,20 +11,22 @@ module.exports = function toReadable (number) {
   if (number < 20) {
     return a[number];
   }
-  if (numString.length === 2){
+  if (numString.length === 2 && numString[1] === '0'){
+      return b[numString[0]];}
+       else if(numString.length === 2) {
       return b[numString[0]]+ ' ' + a[numString[1]];
   } 
   if (numString.length === 3) {
     if (numString[1] === '0' && numString[2] === '0') {
       return a[numString[0]] + ' hundred';  
+    } else if (numString[1] === '1' && numString[2] === '0') {
+        return a[numString[0]] + ' hundred ' + ten;
     } else if (numString[2] === '0') {
         return a[numString[0]] + ' hundred ' + b[numString[1]];
     } else if (numString[1] === '0') {
         return a[numString[0]] + ' hundred ' + a[numString[2]];
     }else if (numString[1] === '1') {
         return a[numString[0]] + ' hundred ' + c[numString[2]];
-    }  else if (numString[1] === '1' && numString[2] === '0') {
-        return a[numString[0]] + ' hundred ' + ten;
     }  
     else {
         return a[numString[0]] + ' hundred ' + b[numString[1]] + ' ' + a[numString[2]];
